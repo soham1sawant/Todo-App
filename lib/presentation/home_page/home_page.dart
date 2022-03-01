@@ -5,49 +5,55 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+        padding: EdgeInsets.symmetric(horizontal: size.width * 0.042),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: 16.0),
+            SizedBox(height: size.height * 0.094),
             Text(
               "March 9, 2020",
               style: TextStyle(
                 fontWeight: FontWeight.bold,
-                fontSize: 32.0,
+                fontSize: size.height * 0.0398,
               ),
             ),
-            SizedBox(height: 5.0),
+            SizedBox(height: size.height * 0.009962),
             Text(
               "5 incomplete ,5 completed",
               style: TextStyle(
-                fontSize: 14.0,
+                fontSize: size.height * 0.0174,
               ),
             ),
-            SizedBox(height: 16.0),
+            SizedBox(height: size.height * 0.01992),
+            Divider(height: size.height * 0.002490),
+            SizedBox(height: size.height * 0.01992),
             Text(
               "Incomplete",
               style: TextStyle(
-                fontSize: 16.0,
+                fontSize: size.height * 0.0224,
                 fontWeight: FontWeight.bold,
               ),
             ),
+            SizedBox(height: size.height * 0.01992),
             Container(
-              height: 200.0,
+              height: size.height * 0.359,
               color: Colors.black,
             ),
-            SizedBox(height: 16.0),
+            SizedBox(height: size.height * 0.0398),
             Text(
               "Completed",
               style: TextStyle(
-                fontSize: 16.0,
+                fontSize: size.height * 0.0224,
                 fontWeight: FontWeight.bold,
               ),
             ),
+            SizedBox(height: size.height * 0.01992),
             Container(
-              height: 200.0,
+              height: size.height * 0.229,
               color: Colors.black,
             )
           ],
