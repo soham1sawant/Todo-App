@@ -112,7 +112,7 @@ class _HomePageState extends State<HomePage> {
                           width: size.width * 0.064,
                           height: size.height * 0.0298,
                           child: Checkbox(
-                            value: false,
+                            value: true,
                             onChanged: (value) {},
                           ),
                         ),
