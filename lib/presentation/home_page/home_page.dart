@@ -81,7 +81,7 @@ class _HomePageState extends State<HomePage> {
                           ),
                         ),
                         SizedBox(width: size.width * 0.0246),
-                        Text("Print parking Passes"),
+                        const Text("Print parking Passes"),
                       ],
                     ),
                   );
@@ -117,7 +117,7 @@ class _HomePageState extends State<HomePage> {
                           ),
                         ),
                         SizedBox(width: size.width * 0.0246),
-                        const Text("Print parking Passes"),
+                        Text("Print parking Passes"),
                       ],
                     ),
                   );
