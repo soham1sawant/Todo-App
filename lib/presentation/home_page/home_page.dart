@@ -19,6 +19,7 @@ class HomePage extends StatelessWidget {
                 fontSize: 32.0,
               ),
             ),
+            SizedBox(height: 5.0),
             Text(
               "5 incomplete ,5 completed",
               style: TextStyle(
@@ -26,6 +27,29 @@ class HomePage extends StatelessWidget {
               ),
             ),
             SizedBox(height: 16.0),
+            Text(
+              "Incomplete",
+              style: TextStyle(
+                fontSize: 16.0,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            Container(
+              height: 200.0,
+              color: Colors.black,
+            ),
+            SizedBox(height: 16.0),
+            Text(
+              "Completed",
+              style: TextStyle(
+                fontSize: 16.0,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            Container(
+              height: 200.0,
+              color: Colors.black,
+            )
           ],
         ),
       ),
