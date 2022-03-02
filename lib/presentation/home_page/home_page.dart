@@ -61,7 +61,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             SizedBox(height: size.height * 0.01992),
-            Container(
+            SizedBox(
               height: size.height * 0.359,
               child: ListView.builder(
                 controller: _incompleteController,
@@ -97,7 +97,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             SizedBox(height: size.height * 0.01992),
-            Container(
+            SizedBox(
               height: size.height * 0.229,
               child: ListView.builder(
                 controller: _completedController,
@@ -117,7 +117,7 @@ class _HomePageState extends State<HomePage> {
                           ),
                         ),
                         SizedBox(width: size.width * 0.0246),
-                        Text("Print parking Passes"),
+                        const Text("Print parking Passes"),
                       ],
                     ),
                   );
