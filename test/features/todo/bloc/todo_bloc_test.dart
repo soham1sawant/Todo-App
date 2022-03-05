@@ -86,7 +86,7 @@ void main() {
       when(todoRepository.loadCompletedTodo).thenAnswer((_) => []);
     },
     build: () => TodoBloc(todoRepository: todoRepository),
-    act: (bloc) => bloc.add(TodoLoadEvent()),
+    act: (bloc) => bloc.add(const TodoLoadEvent()),
     expect: () => <TodoState>[
       TodoLoadingState(),
       TodoLoadedState(
@@ -108,7 +108,7 @@ void main() {
       when(todoRepository.loadCompletedTodo).thenThrow("Error");
     },
     build: () => TodoBloc(todoRepository: todoRepository),
-    act: (bloc) => bloc.add(TodoLoadEvent()),
+    act: (bloc) => bloc.add(const TodoLoadEvent()),
     expect: () => <TodoState>[
       TodoLoadingState(),
       TodoLoadErrorState("Error"),

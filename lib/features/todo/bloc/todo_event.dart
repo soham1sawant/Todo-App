@@ -6,6 +6,7 @@ abstract class TodoEvent extends Equatable {
 }
 
 class TodoLoadEvent extends TodoEvent {
+  const TodoLoadEvent();
   @override
   List<Object?> get props => [];
 }

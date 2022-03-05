@@ -8,7 +8,7 @@ void main() {
   group("TodoEvent", () {
     group("TodoLoadEvent", () {
       test("supports value comparison", () {
-        expect(TodoLoadEvent(), TodoLoadEvent());
+        expect(const TodoLoadEvent(), const TodoLoadEvent());
       });
     });
 

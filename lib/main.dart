@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:todo_app/features/date/bloc/date_bloc.dart';
+import 'package:todo_app/features/date/data/repository/date_repository.dart';
 import 'package:todo_app/features/todo/bloc/todo_bloc.dart';
 import 'package:todo_app/presentation/home_page/home_page.dart';
 import 'package:todo_app/simple_bloc_observer.dart';
@@ -27,14 +29,22 @@ class MyApp extends StatelessWidget {
         RepositoryProvider<TodoRepository>(
           create: (context) => TodoRepository(),
         ),
+        RepositoryProvider<DateRepository>(
+          create: (context) => DateRepository(),
+        ),
       ],
       child: MultiBlocProvider(
         providers: [
           BlocProvider(
             create: (context) => TodoBloc(
-                todoRepository: RepositoryProvider.of<TodoRepository>(context))
-              ..add(TodoLoadEvent()),
+              todoRepository: RepositoryProvider.of<TodoRepository>(context),
+            )..add(const TodoLoadEvent()),
           ),
+          BlocProvider(
+            create: (context) => DateBloc(
+              dateRepository: RepositoryProvider.of<DateRepository>(context),
+            )..add(const DateLoadEvent()),
+          )
         ],
         child: const MaterialApp(
           title: "Todo's",
