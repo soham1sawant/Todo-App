@@ -1,4 +1,3 @@
-
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
@@ -46,6 +45,7 @@ class TodoBloc extends Bloc<TodoEvent, TodoState> {
     if (state is TodoLoadedState) {
       try {
         todoRepository.addToTodo(event.addedTodo);
+
         emit(TodoLoadedState(
           incompleteTodo: IncompleteTodo(incompleteTodo: [
             ...state.incompleteTodo.incompleteTodo,
@@ -61,10 +61,48 @@ class TodoBloc extends Bloc<TodoEvent, TodoState> {
   }
 
   void _onTodoCompletedEvent(
-      TodoCompletedEvent event, Emitter<TodoState> emit) {}
+      TodoCompletedEvent event, Emitter<TodoState> emit) {
+    final state = this.state;
+
+    if (state is TodoLoadedState) {
+      try {
+        todoRepository.completedATodo(event.completedTodo);
+
+        emit(TodoLoadedState(
+          incompleteTodo: IncompleteTodo(
+              incompleteTodo: [...state.incompleteTodo.incompleteTodo]
+                ..remove(event.completedTodo)),
+          completedTodo: CompletedTodo(completedTodo: [
+            ...state.completedTodo.completedTodo,
+            event.completedTodo
+          ]),
+        ));
+      } catch (e) {
+        emit(TodoLoadErrorState(e.toString()));
+      }
+    }
+  }
 
   void _onTodoIncompleteEvent(
-      TodoIncompletedEvent event, Emitter<TodoState> emit) {}
+      TodoIncompletedEvent event, Emitter<TodoState> emit) {
+    final state = this.state;
 
-  
+    if (state is TodoLoadedState) {
+      try {
+        todoRepository.notCompletedATodo(event.incompletedTodo);
+
+        emit(TodoLoadedState(
+          incompleteTodo: IncompleteTodo(incompleteTodo: [
+            ...state.incompleteTodo.incompleteTodo,
+            event.incompletedTodo
+          ]),
+          completedTodo: CompletedTodo(
+              completedTodo: [...state.completedTodo.completedTodo]
+                ..remove(event.incompletedTodo)),
+        ));
+      } catch (e) {
+        emit(TodoLoadErrorState(e.toString()));
+      }
+    }
+  }
 }

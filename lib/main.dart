@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hydrated_bloc/hydrated_bloc.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:todo_app/features/todo/bloc/todo_bloc.dart';
 import 'package:todo_app/presentation/home_page/home_page.dart';
 import 'package:todo_app/simple_bloc_observer.dart';
