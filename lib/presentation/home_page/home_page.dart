@@ -40,14 +40,14 @@ class _HomePageState extends State<HomePage> {
               "March 9, 2020",
               style: TextStyle(
                 fontWeight: FontWeight.bold,
-                fontSize: size.height * 0.0398,
+                fontSize: size.height * 0.05,
               ),
             ),
             SizedBox(height: size.height * 0.009962),
             Text(
               "5 incomplete ,5 completed",
               style: TextStyle(
-                fontSize: size.height * 0.0174,
+                fontSize: size.height * 0.02,
               ),
             ),
             SizedBox(height: size.height * 0.01992),
@@ -56,11 +56,11 @@ class _HomePageState extends State<HomePage> {
             Text(
               "Incomplete",
               style: TextStyle(
-                fontSize: size.height * 0.0224,
+                fontSize: size.height * 0.03,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height: size.height * 0.01992),
+            SizedBox(height: size.height * 0.019),
             SizedBox(
               height: size.height * 0.359,
               child: ListView.builder(
@@ -73,15 +73,18 @@ class _HomePageState extends State<HomePage> {
                     child: Row(
                       children: [
                         SizedBox(
-                          width: size.width * 0.064,
-                          height: size.height * 0.0298,
+                          width: size.width * 0.07,
+                          height: size.height * 0.035,
                           child: Checkbox(
                             value: false,
                             onChanged: (value) {},
                           ),
                         ),
                         SizedBox(width: size.width * 0.0246),
-                        const Text("Print parking Passes"),
+                        Text(
+                          "Print parking Passes",
+                          style: TextStyle(fontSize: size.height * 0.029),
+                        ),
                       ],
                     ),
                   );
@@ -92,11 +95,11 @@ class _HomePageState extends State<HomePage> {
             Text(
               "Completed",
               style: TextStyle(
-                fontSize: size.height * 0.0224,
+                fontSize: size.height * 0.03,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height: size.height * 0.01992),
+            SizedBox(height: size.height * 0.019),
             SizedBox(
               height: size.height * 0.229,
               child: ListView.builder(
@@ -109,15 +112,18 @@ class _HomePageState extends State<HomePage> {
                     child: Row(
                       children: [
                         SizedBox(
-                          width: size.width * 0.064,
-                          height: size.height * 0.0298,
+                          width: size.width * 0.07,
+                          height: size.height * 0.035,
                           child: Checkbox(
                             value: true,
                             onChanged: (value) {},
                           ),
                         ),
                         SizedBox(width: size.width * 0.0246),
-                        const Text("Print parking Passes"),
+                        Text(
+                          "Print parking Passes",
+                          style: TextStyle(fontSize: size.height * 0.029),
+                        ),
                       ],
                     ),
                   );
@@ -127,18 +133,14 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ),
-      floatingActionButton: SizedBox(
-        height: size.height * 0.0697,
-        width: size.width * 0.1493,
-        child: FloatingActionButton(
-          backgroundColor: const Color(0xff515CC6),
-          child: Icon(
-            Icons.add,
-            size: size.width * 0.0533,
-            color: Colors.white,
-          ),
-          onPressed: () {},
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: const Color(0xff515CC6),
+        child: Icon(
+          Icons.add,
+          size: size.width * 0.095,
+          color: Colors.white,
         ),
+        onPressed: () {},
       ),
     );
   }

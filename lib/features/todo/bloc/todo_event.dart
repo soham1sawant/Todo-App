@@ -1,10 +1,11 @@
 part of 'todo_bloc.dart';
 
 @immutable
-abstract class TodoEvent extends Equatable {}
+abstract class TodoEvent extends Equatable {
+  const TodoEvent();
+}
 
 class TodoLoadEvent extends TodoEvent {
-
   @override
   List<Object?> get props => [];
 }
@@ -12,7 +13,7 @@ class TodoLoadEvent extends TodoEvent {
 class TodoAddedEvent extends TodoEvent {
   final TodoModel addedTodo;
 
-  TodoAddedEvent({required this.addedTodo});
+  const TodoAddedEvent({required this.addedTodo});
 
   @override
   List<Object?> get props => [addedTodo];
@@ -21,7 +22,7 @@ class TodoAddedEvent extends TodoEvent {
 class TodoCompletedEvent extends TodoEvent {
   final TodoModel completedTodo;
 
-  TodoCompletedEvent({required this.completedTodo});
+  const TodoCompletedEvent({required this.completedTodo});
 
   @override
   List<Object?> get props => [completedTodo];
@@ -30,7 +31,7 @@ class TodoCompletedEvent extends TodoEvent {
 class TodoIncompletedEvent extends TodoEvent {
   final TodoModel incompletedTodo;
 
-  TodoIncompletedEvent({required this.incompletedTodo});
+  const TodoIncompletedEvent({required this.incompletedTodo});
 
   @override
   List<Object?> get props => [incompletedTodo];

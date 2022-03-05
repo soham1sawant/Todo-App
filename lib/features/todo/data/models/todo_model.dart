@@ -6,6 +6,7 @@ part 'todo_model.g.dart';
 @JsonSerializable()
 class TodoModel extends Equatable {
   final String heading;
+  
   @JsonKey(defaultValue: "")
   final String description;
 
@@ -17,5 +18,5 @@ class TodoModel extends Equatable {
   Map<String, dynamic> toJson() => _$TodoModelToJson(this);
 
   @override
-  List<Object?> get props => [];
+  List<Object?> get props => [heading, description];
 }

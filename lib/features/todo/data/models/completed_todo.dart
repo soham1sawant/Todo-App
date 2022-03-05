@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+
 import 'package:todo_app/features/todo/data/models/todo_model.dart';
 
 class CompletedTodo extends Equatable {

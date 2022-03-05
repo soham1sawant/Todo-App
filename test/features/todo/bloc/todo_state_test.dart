@@ -32,7 +32,7 @@ void main() {
 
     group("TodoLoadErrorState", () {
       test("supports  value comparison", () {
-        expect(TodoLoadErrorState(), TodoLoadErrorState());
+        expect(TodoLoadErrorState(""), TodoLoadErrorState(""));
       });
     });
   });

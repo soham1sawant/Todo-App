@@ -1,3 +1,4 @@
+
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
@@ -18,15 +19,52 @@ class TodoBloc extends Bloc<TodoEvent, TodoState> {
     on<TodoLoadEvent>(_onTodoLoadEvent);
     on<TodoAddedEvent>(_onTodoAddedEvent);
     on<TodoCompletedEvent>(_onTodoCompletedEvent);
-    on<TodoIncompletedEvent>(_onTodoIncompleteEvent);   
+    on<TodoIncompletedEvent>(_onTodoIncompleteEvent);
   }
 
-  void _onTodoLoadEvent(TodoLoadEvent event, Emitter<TodoState> emit) {}
+  void _onTodoLoadEvent(TodoLoadEvent event, Emitter<TodoState> emit) {
+    emit(TodoLoadingState());
 
-  void _onTodoAddedEvent(TodoAddedEvent event, Emitter<TodoState> emit) {}
+    try {
+      final incompleteTodos = todoRepository.loadIncompleteTodo();
+      final completedTodos = todoRepository.loadCompletedTodo();
 
-  void _onTodoCompletedEvent(TodoCompletedEvent event, Emitter<TodoState> emit) {}
+      emit(
+        TodoLoadedState(
+          incompleteTodo: IncompleteTodo(incompleteTodo: [...incompleteTodos]),
+          completedTodo: CompletedTodo(completedTodo: [...completedTodos]),
+        ),
+      );
+    } catch (e) {
+      emit(TodoLoadErrorState(e.toString()));
+    }
+  }
 
-  void _onTodoIncompleteEvent(TodoIncompletedEvent event, Emitter<TodoState> emit) {}
+  void _onTodoAddedEvent(TodoAddedEvent event, Emitter<TodoState> emit) {
+    final state = this.state;
 
+    if (state is TodoLoadedState) {
+      try {
+        todoRepository.addToTodo(event.addedTodo);
+        emit(TodoLoadedState(
+          incompleteTodo: IncompleteTodo(incompleteTodo: [
+            ...state.incompleteTodo.incompleteTodo,
+            event.addedTodo
+          ]),
+          completedTodo:
+              CompletedTodo(completedTodo: state.completedTodo.completedTodo),
+        ));
+      } catch (e) {
+        emit(TodoLoadErrorState(e.toString()));
+      }
+    }
+  }
+
+  void _onTodoCompletedEvent(
+      TodoCompletedEvent event, Emitter<TodoState> emit) {}
+
+  void _onTodoIncompleteEvent(
+      TodoIncompletedEvent event, Emitter<TodoState> emit) {}
+
+  
 }

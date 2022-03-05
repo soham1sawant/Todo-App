@@ -9,13 +9,12 @@ import 'package:todo_app/simple_bloc_observer.dart';
 import 'features/todo/data/repository/todo_repository.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  final storage = await HydratedStorage.build(
-      storageDirectory: await getApplicationDocumentsDirectory());
+  // WidgetsFlutterBinding.ensureInitialized();
+  // final storage = await HydratedStorage.build(
+  //     storageDirectory: await getApplicationDocumentsDirectory());
 
-  HydratedBlocOverrides.runZoned(
+  BlocOverrides.runZoned(
     () => runApp(const MyApp()),
-    storage: storage,
     blocObserver: SimpleBlocObserver(),
   );
 }
@@ -28,7 +27,8 @@ class MyApp extends StatelessWidget {
     return MultiRepositoryProvider(
       providers: [
         RepositoryProvider<TodoRepository>(
-            create: (context) => TodoRepository()),
+          create: (context) => TodoRepository(),
+        ),
       ],
       child: MultiBlocProvider(
         providers: [

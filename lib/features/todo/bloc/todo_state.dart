@@ -4,7 +4,6 @@ part of 'todo_bloc.dart';
 abstract class TodoState extends Equatable {}
 
 class TodoLoadingState extends TodoState {
-  
   @override
   List<Object?> get props => [];
 }
@@ -19,10 +18,14 @@ class TodoLoadedState extends TodoState {
   });
 
   @override
-  List<Object?> get props => [];
+  List<Object?> get props => [incompleteTodo, completedTodo];
 }
 
 class TodoLoadErrorState extends TodoState {
+  final String error;
+
+  TodoLoadErrorState(this.error);
+
   @override
-  List<Object?> get props => [];
+  List<Object?> get props => [error];
 }
