@@ -9,6 +9,21 @@ void main() {
   });
 
   test("checks if geMonth() works as intended", () {
-    expect(dateRepository.getMonth(), "March");         // TODO: change month while running test
+    final List<String> monthNames = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
+
+    expect(dateRepository.getMonth(),monthNames[DateTime.now().month - 1]);
   });
 }
