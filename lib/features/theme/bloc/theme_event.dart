@@ -13,3 +13,10 @@ class ThemeLoadEvent extends ThemeEvent {
   @override
   List<Object> get props => [];
 }
+
+class DarkThemeEvent extends ThemeEvent {
+  const DarkThemeEvent();
+
+  @override
+  List<Object> get props => [];
+}

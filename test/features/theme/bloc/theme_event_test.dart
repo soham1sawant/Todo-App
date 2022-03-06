@@ -8,5 +8,11 @@ void main() {
         expect(const ThemeLoadEvent(), const ThemeLoadEvent());
       });
     });
+
+    group("DarkThemeEvent", () {
+      test("supports value comparison", () {
+        expect(const DarkThemeEvent(), const DarkThemeEvent());
+      });
+    });
   });
 }
