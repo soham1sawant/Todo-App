@@ -11,18 +11,20 @@ class DateBloc extends Bloc<DateEvent, DateState> {
   final DateRepository dateRepository;
 
   DateBloc({required this.dateRepository}) : super(const DateLoadingState()) {
-    on<DateLoadEvent>((event, emit) {
-      emit(const DateLoadingState());
+    on<DateLoadEvent>(_oneDateLoadEvent);
+  }
 
-      try {
-        final month = dateRepository.getMonth();
-        final date = dateRepository.getDate();
-        final year = dateRepository.getYear();
+  void _oneDateLoadEvent(DateLoadEvent evet, Emitter<DateState> emit) {
+    emit(const DateLoadingState());
 
-        emit(DateLoadedState(dateModel: DateModel(month, date, year)));
-      } catch (e) {
-        emit(DateLoadErrorState(e.toString()));
-      }
-    });
+    try {
+      final month = dateRepository.getMonth();
+      final date = dateRepository.getDate();
+      final year = dateRepository.getYear();
+
+      emit(DateLoadedState(dateModel: DateModel(month, date, year)));
+    } catch (e) {
+      emit(DateLoadErrorState(e.toString()));
+    }
   }
 }
