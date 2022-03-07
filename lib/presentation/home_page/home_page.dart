@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../features/todo/bloc/todo_bloc.dart';
 import '../widgets/list_of_todos.dart';
 
 class HomePage extends StatefulWidget {
@@ -63,10 +65,25 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             SizedBox(height: size.height * 0.019),
-            ListOfTodos(
-              scrollController: _incompleteController,
-              heightOfList: 0.359,
-              isCompleted: false,
+            BlocBuilder<TodoBloc, TodoState>(
+              builder: (context, state) {
+                if (state is TodoLoadingState) {
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+                } else if (state is TodoLoadedState) {
+                  return ListOfTodos(
+                    scrollController: _incompleteController,
+                    heightOfList: 0.359,
+                    isCompleted: false,
+                    listofTodos: state.incompleteTodo.incompleteTodo,
+                  );
+                } else if (state is TodoLoadErrorState) {
+                  return const Center(child: Icon(Icons.error));
+                } else {
+                  return const Center(child: Icon(Icons.error));
+                }
+              },
             ),
             SizedBox(height: size.height * 0.0398),
             Text(
@@ -77,10 +94,25 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             SizedBox(height: size.height * 0.019),
-            ListOfTodos(
-              scrollController: _completedController,
-              heightOfList: 0.229,
-              isCompleted: true,
+            BlocBuilder<TodoBloc, TodoState>(
+              builder: (context, state) {
+                if (state is TodoLoadingState) {
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+                } else if (state is TodoLoadedState) {
+                  return ListOfTodos(
+                    scrollController: _completedController,
+                    heightOfList: 0.229,
+                    isCompleted: false,
+                    listofTodos: state.completedTodo.completedTodo,
+                  );
+                } else if (state is TodoLoadErrorState) {
+                  return const Center(child: Icon(Icons.error));
+                } else {
+                  return const Center(child: Icon(Icons.error));
+                }
+              },
             ),
           ],
         ),
@@ -101,4 +133,3 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
-
