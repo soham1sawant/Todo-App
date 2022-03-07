@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../widgets/list_of_todos.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -61,35 +63,10 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             SizedBox(height: size.height * 0.019),
-            SizedBox(
-              height: size.height * 0.359,
-              child: ListView.builder(
-                controller: _incompleteController,
-                itemCount: 15,
-                itemBuilder: (context, index) {
-                  return Padding(
-                    padding:
-                        EdgeInsets.fromLTRB(0, 0, 0, size.height * 0.01992),
-                    child: Row(
-                      children: [
-                        SizedBox(
-                          width: size.width * 0.07,
-                          height: size.height * 0.035,
-                          child: Checkbox(
-                            value: false,
-                            onChanged: (value) {},
-                          ),
-                        ),
-                        SizedBox(width: size.width * 0.0246),
-                        Text(
-                          "Print parking Passes",
-                          style: TextStyle(fontSize: size.height * 0.029),
-                        ),
-                      ],
-                    ),
-                  );
-                },
-              ),
+            ListOfTodos(
+              scrollController: _incompleteController,
+              heightOfList: 0.359,
+              isCompleted: false,
             ),
             SizedBox(height: size.height * 0.0398),
             Text(
@@ -100,48 +77,28 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             SizedBox(height: size.height * 0.019),
-            SizedBox(
-              height: size.height * 0.229,
-              child: ListView.builder(
-                controller: _completedController,
-                itemCount: 15,
-                itemBuilder: (context, index) {
-                  return Padding(
-                    padding:
-                        EdgeInsets.fromLTRB(0, 0, 0, size.height * 0.01992),
-                    child: Row(
-                      children: [
-                        SizedBox(
-                          width: size.width * 0.07,
-                          height: size.height * 0.035,
-                          child: Checkbox(
-                            value: true,
-                            onChanged: (value) {},
-                          ),
-                        ),
-                        SizedBox(width: size.width * 0.0246),
-                        Text(
-                          "Print parking Passes",
-                          style: TextStyle(fontSize: size.height * 0.029),
-                        ),
-                      ],
-                    ),
-                  );
-                },
-              ),
-            )
+            ListOfTodos(
+              scrollController: _completedController,
+              heightOfList: 0.229,
+              isCompleted: true,
+            ),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: const Color(0xff515CC6),
-        child: Icon(
-          Icons.add,
-          size: size.width * 0.095,
-          color: Colors.white,
+      floatingActionButton: SizedBox(
+        height: size.height * 0.0697,
+        width: size.height * 0.0697,
+        child: FloatingActionButton(
+          backgroundColor: const Color(0xff515CC6),
+          child: Icon(
+            Icons.add,
+            size: size.width * 0.095,
+            color: Colors.white,
+          ),
+          onPressed: () {},
         ),
-        onPressed: () {},
       ),
     );
   }
 }
+
