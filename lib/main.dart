@@ -4,7 +4,9 @@ import 'package:todo_app/features/date/bloc/date_bloc.dart';
 import 'package:todo_app/features/date/data/repository/date_repository.dart';
 import 'package:todo_app/features/theme/data/repository/theme_repository.dart';
 import 'package:todo_app/features/todo/bloc/todo_bloc.dart';
+import 'package:todo_app/presentation/add_task_page/add_task_page.dart';
 import 'package:todo_app/presentation/home_page/home_page.dart';
+import 'package:todo_app/presentation/theme_page/theme_page.dart';
 import 'package:todo_app/simple_bloc_observer.dart';
 
 import 'features/theme/bloc/theme_bloc.dart';
@@ -56,9 +58,14 @@ class MyApp extends StatelessWidget {
             )..add(const ThemeLoadEvent()),
           ),
         ],
-        child: const MaterialApp(
+        child: MaterialApp(
           title: "Todo's",
-          home: HomePage(),
+          routes: {
+            "/themepage": ((context) => const ThemePage()),
+            "/homepage": ((context) => const HomePage()),
+            "/addtask" : ((context) => const AddTaskPage()),
+          },
+          home: const HomePage(),
         ),
       ),
     );
