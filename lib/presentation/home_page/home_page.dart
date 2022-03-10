@@ -42,7 +42,7 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: size.height * 0.094),
+            SizedBox(height: size.height * 0.07),
             BlocBuilder<DateBloc, DateState>(
               builder: (context, state) {
                 if (state is DateLoadingState) {
@@ -74,10 +74,15 @@ class _HomePageState extends State<HomePage> {
                     child: CircularProgressIndicator(),
                   );
                 } else if (state is TodoLoadedState) {
-                  noIncompleted = state.incompleteTodo.incompleteTodo.length.toString();
-                  noCompleted = state.completedTodo.completedTodo.length.toString();
+                  noIncompleted =
+                      state.incompleteTodo.incompleteTodo.length.toString();
+                  noCompleted =
+                      state.completedTodo.completedTodo.length.toString();
                   return Text(
-                    noIncompleted + " incomplete, " + noCompleted + " completed",
+                    noIncompleted +
+                        " incomplete, " +
+                        noCompleted +
+                        " completed",
                     style: TextStyle(
                       fontSize: size.height * 0.02,
                     ),
@@ -159,7 +164,7 @@ class _HomePageState extends State<HomePage> {
           backgroundColor: const Color(0xff515CC6),
           child: Icon(
             Icons.add,
-            size: size.width * 0.095,
+            size: size.width * 0.09,
             color: Colors.white,
           ),
           onPressed: () {
