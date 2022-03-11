@@ -68,7 +68,6 @@ class _AddTaskPageState extends State<AddTaskPage> {
                 TextFormField(
                   controller: _infoController,
                   maxLines: 10,
-                  
                   decoration: const InputDecoration(
                     hintText: "enter description",
                   ),
@@ -99,6 +98,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
               _headingController.clear();
               _infoController.clear();
 
+              FocusManager.instance.primaryFocus?.unfocus();
               Navigator.pushReplacementNamed(context, "/homepage");
             }
           },

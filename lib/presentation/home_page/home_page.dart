@@ -144,7 +144,7 @@ class _HomePageState extends State<HomePage> {
                   return ListOfTodos(
                     scrollController: _completedController,
                     heightOfList: 0.229,
-                    isCompleted: false,
+                    isCompleted: true,
                     listofTodos: state.completedTodo.completedTodo,
                   );
                 } else if (state is TodoLoadErrorState) {
