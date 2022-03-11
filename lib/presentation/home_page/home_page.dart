@@ -57,6 +57,7 @@ class _HomePageState extends State<HomePage> {
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: size.height * 0.05,
+                      color: Theme.of(context).primaryColor,
                     ),
                   );
                 } else if (state is DateLoadErrorState) {
@@ -85,6 +86,7 @@ class _HomePageState extends State<HomePage> {
                         " completed",
                     style: TextStyle(
                       fontSize: size.height * 0.02,
+                      color: Theme.of(context).primaryColor,
                     ),
                   );
                 } else if (state is TodoLoadErrorState) {
@@ -95,13 +97,17 @@ class _HomePageState extends State<HomePage> {
               },
             ),
             SizedBox(height: size.height * 0.01992),
-            Divider(height: size.height * 0.002490),
+            Divider(
+              height: size.height * 0.002490,
+              color: Theme.of(context).primaryColor,
+            ),
             SizedBox(height: size.height * 0.01992),
             Text(
               "Incomplete",
               style: TextStyle(
                 fontSize: size.height * 0.03,
                 fontWeight: FontWeight.bold,
+                color: Theme.of(context).primaryColor,
               ),
             ),
             SizedBox(height: size.height * 0.019),
@@ -131,6 +137,7 @@ class _HomePageState extends State<HomePage> {
               style: TextStyle(
                 fontSize: size.height * 0.03,
                 fontWeight: FontWeight.bold,
+                color: Theme.of(context).primaryColor,
               ),
             ),
             SizedBox(height: size.height * 0.019),

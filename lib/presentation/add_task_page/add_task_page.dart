@@ -46,33 +46,37 @@ class _AddTaskPageState extends State<AddTaskPage> {
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: size.height * 0.05,
+                color: Theme.of(context).primaryColor,
               ),
             ),
-            Form(
-              key: _formKey,
-              child: Column(children: [
-                TextFormField(
-                  controller: _headingController,
-                  validator: (value) {
-                    if (value!.isEmpty) {
-                      return "Heading can't be empty!";
-                    } else {
-                      return null;
-                    }
-                  },
-                  decoration: const InputDecoration(
-                    hintText: "enter heading",
+            Container(
+              color: Theme.of(context).cardColor,
+              child: Form(
+                key: _formKey,
+                child: Column(children: [
+                  TextFormField(
+                    controller: _headingController,
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return "Heading can't be empty!";
+                      } else {
+                        return null;
+                      }
+                    },
+                    decoration: const InputDecoration(
+                      hintText: "enter heading",
+                    ),
                   ),
-                ),
-                SizedBox(height: size.height * 0.055),
-                TextFormField(
-                  controller: _infoController,
-                  maxLines: 10,
-                  decoration: const InputDecoration(
-                    hintText: "enter description",
+                  SizedBox(height: size.height * 0.055),
+                  TextFormField(
+                    controller: _infoController,
+                    maxLines: 10,
+                    decoration: const InputDecoration(
+                      hintText: "enter description",
+                    ),
                   ),
-                ),
-              ]),
+                ]),
+              ),
             ),
           ],
         ),

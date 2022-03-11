@@ -62,7 +62,10 @@ class ListOfTodos extends StatelessWidget {
                 SizedBox(width: size.width * 0.0246),
                 Text(
                   listofTodos[index].heading,
-                  style: TextStyle(fontSize: size.height * 0.029),
+                  style: TextStyle(
+                    fontSize: size.height * 0.029,
+                    color: Theme.of(context).primaryColor,
+                  ),
                 ),
               ],
             ),
