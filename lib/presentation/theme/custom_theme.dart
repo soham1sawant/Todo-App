@@ -13,17 +13,4 @@ class CustomTheme {
       canvasColor: Colors.grey,
     );
   }
-
-  static ThemeData get darkTheme {
-    return ThemeData(
-      scaffoldBackgroundColor: Colors.black,
-      fontFamily: GoogleFonts.inter().fontFamily,
-      buttonTheme: const ButtonThemeData(
-        buttonColor: Color(0xff515CC6),
-      ),
-      primaryColor: Colors.white,
-      canvasColor: Colors.white,
-
-    );
-  }
 }

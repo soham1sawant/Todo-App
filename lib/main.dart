@@ -2,15 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:todo_app/features/date/bloc/date_bloc.dart';
 import 'package:todo_app/features/date/data/repository/date_repository.dart';
-import 'package:todo_app/features/theme/data/repository/theme_repository.dart';
 import 'package:todo_app/features/todo/bloc/todo_bloc.dart';
 import 'package:todo_app/presentation/add_task_page/add_task_page.dart';
 import 'package:todo_app/presentation/home_page/home_page.dart';
 import 'package:todo_app/presentation/theme/custom_theme.dart';
-import 'package:todo_app/presentation/theme_page/theme_page.dart';
 import 'package:todo_app/simple_bloc_observer.dart';
 
-import 'features/theme/bloc/theme_bloc.dart';
 import 'features/todo/data/repository/todo_repository.dart';
 
 void main() async {
@@ -37,9 +34,6 @@ class MyApp extends StatelessWidget {
         RepositoryProvider<DateRepository>(
           create: (context) => DateRepository(),
         ),
-        RepositoryProvider<ThemeRepository>(
-          create: (context) => ThemeRepository(),
-        ),
       ],
       child: MultiBlocProvider(
         providers: [
@@ -53,22 +47,17 @@ class MyApp extends StatelessWidget {
               dateRepository: RepositoryProvider.of<DateRepository>(context),
             )..add(const DateLoadEvent()),
           ),
-          BlocProvider(
-            create: (context) => ThemeBloc(
-              themeRepository: RepositoryProvider.of<ThemeRepository>(context),
-            )..add(const ThemeLoadEvent()),
-          ),
         ],
         child: MaterialApp(
           title: "Todo's",
+          initialRoute: "/homepage",
           routes: {
-            "/themepage": ((context) => const ThemePage()),
             "/homepage": ((context) => const HomePage()),
             "/addtask": ((context) => const AddTaskPage()),
           },
-          themeMode: ThemeMode.dark,
-          theme: CustomTheme.darkTheme,
-          home: const HomePage(),
+          themeMode: ThemeMode.light,
+          theme: CustomTheme.lightTheme,
+          debugShowCheckedModeBanner: false,
         ),
       ),
     );
